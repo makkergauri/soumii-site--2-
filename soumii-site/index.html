@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>a little something for Soumii</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Poppins:wght@300;400;500;600&family=Caveat:wght@500;600;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="bg-blobs" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="sparkles"></div>
+</div>
+
+<audio id="global-audio" src="assets/music/i_like_me_better.mp3" preload="auto" loop></audio>
+
+<div id="mini-player" class="mini-player">
+  <button id="mini-play-pause" class="mini-btn" aria-label="play or pause">▶</button>
+  <div id="mini-progress-bar" class="mini-progress-bar">
+    <div id="mini-progress-fill" class="mini-progress-fill"></div>
+  </div>
+  <input id="mini-volume" class="mini-volume" type="range" min="0" max="1" step="0.01" value="0.7" aria-label="volume" />
+</div>
+
+<div class="progress-ribbon" id="progress-ribbon" aria-hidden="true">
+  <span class="progress-dot" data-dot="1"></span>
+  <span class="progress-dot" data-dot="2"></span>
+  <span class="progress-dot" data-dot="3"></span>
+  <span class="progress-dot" data-dot="4"></span>
+  <span class="progress-dot" data-dot="5"></span>
+  <span class="progress-dot" data-dot="6"></span>
+  <span class="progress-dot" data-dot="7"></span>
+  <span class="progress-dot" data-dot="8"></span>
+</div>
+
+<main id="app">
+
+  <section class="page active" data-page="1">
+    <div class="page-inner frame-double no-back-btn">
+      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+      <div class="opening-content">
+        <p class="handwritten small-note">a little something for</p>
+        <h1 class="hero-name">Soumii</h1>
+        <div class="squiggle-underline" aria-hidden="true">
+          <svg viewBox="0 0 220 20"><path d="M2 12 Q 20 2, 40 12 T 80 12 T 120 12 T 160 12 T 200 12" /></svg>
+        </div>
+        <p class="hero-sub">best roommate ever.</p>
+        <button class="btn btn-primary btn-pulse" data-next>open →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" data-page="2">
+    <div class="page-inner frame-double">
+      <button class="btn-back" data-back>← back</button>
+      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+      <div class="glass-card">
+        <h2 class="page-heading">our song 🎵</h2>
+        <button id="song-play-btn" class="play-orb" aria-label="play our song">
+          <span class="play-orb-ring"></span>
+          <span id="song-play-icon" class="play-orb-icon">▶</span>
+        </button>
+        <div id="song-placeholder" class="song-placeholder" style="display:none;">
+          <span class="song-placeholder-icon">🎶</span>
+          <p>add your song here — drop it at <code>assets/music/i_like_me_better.mp3</code></p>
+        </div>
+        <p class="song-caption handwritten">press play, then keep going — it'll follow you the whole way through 🎧</p>
+        <button class="btn btn-primary" data-next>next →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" data-page="3">
+    <div class="page-inner frame-double wide">
+      <button class="btn-back" data-back>← back</button>
+      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+      <h2 class="page-heading">all our moments 📸</h2>
+      <div id="slideshow-main" class="slideshow"></div>
+
+      <div id="secret-question" class="secret-question-card">
+        <p class="handwritten">do u wanna see some secret pics? 👀</p>
+        <div class="secret-question-btns">
+          <button class="btn btn-secondary" id="secret-yes-btn">yes 😏</button>
+          <button class="btn btn-primary" id="secret-no-btn">nah, next page →</button>
+        </div>
+      </div>
+
+      <div id="secret-gallery" class="secret-gallery" style="display:none;">
+        <h3 class="page-heading small">our ugliest pics 🤡</h3>
+        <div id="slideshow-ugly" class="slideshow"></div>
+        <button class="btn btn-primary" data-next>continue →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" data-page="4">
+    <div class="page-inner frame-double wide">
+      <button class="btn-back" data-back>← back</button>
+      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+      <h2 class="page-heading">things you should know about her</h2>
+      <p class="album-hint handwritten">tap a card to reveal ✦</p>
+      <div id="facts-grid" class="facts-grid"></div>
+      <button class="btn btn-primary" data-next>next →</button>
+    </div>
+  </section>
+
+  <section class="page" data-page="5">
+    <div class="page-inner frame-double">
+      <button class="btn-back" data-back>← back</button>
+      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+      <h2 class="page-heading">catch the ramen 🍜</h2>
+      <div class="score-pill">score: <span id="game-score">0</span></div>
+      <div class="game-frame">
+        <canvas id="ramen-canvas"></canvas>
+        <button id="game-start-btn" class="btn btn-primary game-start-btn">start ▶</button>
+        <div id="game-modal" class="game-modal">
+          <div class="game-modal-card">
+            <p id="game-modal-text" class="handwritten"></p>
+            <button id="game-modal-close" class="btn btn-secondary btn-small">keep catching →</button>
+          </div>
+        </div>
+        <div id="game-over-modal" class="game-modal">
+          <div class="game-modal-card">
+            <p class="handwritten">game over! final score: <span id="game-final-score">0</span></p>
+            <button id="game-over-restart-btn" class="btn btn-secondary btn-small">play again ↻</button>
+          </div>
+        </div>
+      </div>
+      <p class="album-hint handwritten">arrow keys or drag to move the bowl catcher</p>
+      <button class="btn btn-primary" data-next>next →</button>
+    </div>
+  </section>
+
+  <section class="page" data-page="6">
+    <div class="page-inner frame-double">
+      <button class="btn-back" data-back>← back</button>
+      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+      <h2 class="page-heading">the countdown is on ⏳</h2>
+
+      <div class="countdown-grid">
+        <div class="countdown-card cd-pink"><span id="cd-days" class="cd-num">00</span><span class="cd-label">days</span></div>
+        <div class="countdown-card cd-lavender"><span id="cd-hours" class="cd-num">00</span><span class="cd-label">hours</span></div>
+        <div class="countdown-card cd-mint"><span id="cd-minutes" class="cd-num">00</span><span class="cd-label">min</span></div>
+        <div class="countdown-card cd-sky"><span id="cd-seconds" class="cd-num">00</span><span class="cd-label">sec</span></div>
+      </div>
+
+      <div id="cake-wrap" class="cake-wrap"></div>
+      <p id="cd-caption" class="handwritten cake-caption">the candles are still burning... blow them out on the day 🎂</p>
+
+      <button class="btn btn-primary" data-next>next →</button>
+    </div>
+  </section>
+
+  <section class="page" data-page="7">
+    <div class="page-inner frame-double wide">
+      <button class="btn-back" data-back>← back</button>
+      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+      <h2 class="page-heading">8 letters, 8 things i love about you</h2>
+      <div id="envelope-stack" class="envelope-stack"></div>
+      <div id="letters-done-row" class="letters-done-row" style="display:none;">
+        <button class="btn btn-primary" id="letters-done-btn">you've read them all 🥹 — next →</button>
+      </div>
+      <a href="#" id="letters-skip-link" class="skip-link">skip to the end →</a>
+    </div>
+  </section>
+
+  <section class="page" data-page="7b">
+    <div class="page-inner frame-double letter-page">
+      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+      <button class="btn-back" id="letter-back-btn">← back to letters</button>
+      <h2 id="letter-title" class="page-heading handwritten letter-title"></h2>
+      <div id="letter-body" class="letter-body handwritten"></div>
+    </div>
+  </section>
+
+  <section class="page" data-page="8">
+    <div class="page-inner frame-double final-page no-back-btn">
+      <button class="btn-back" data-back>← back</button>
+      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+      <div class="final-message">
+        <p>To my Roommate, Soumiiiiiii,</p>
+        <p>I love you so much, I still can't digest the fact that you're going to live with someone who isn't me. I love every single bit of time we spent together as roommates, and I hope to do it all over again — this life, and every other life after it. My college life would've been so boring and shitty if I hadn't gotten a roommate like you.</p>
+        <p>I hope this year, and every year after it, gives you everything you deserve. I want to see you soon and rant about everything, like always.</p>
+        <p class="final-signoff">From urs,<br>Somyaa.</p>
+      </div>
+      <button class="btn btn-primary btn-large" id="celebrate-btn">celebrate 🎉</button>
+      <div class="doodle-divider" aria-hidden="true">✦ ⋆ ✦</div>
+      <p class="handwritten footer-note">made with ♡</p>
+    </div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<script src="photos.js"></script>
+<script src="ugly-photos.js"></script>
+<script src="facts.js"></script>
+<script src="letters.js"></script>
+<script src="countdown.js"></script>
+<script src="game.js"></script>
+<script src="music-player.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
