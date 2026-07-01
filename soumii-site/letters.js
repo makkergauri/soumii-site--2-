@@ -1,4 +1,4 @@
-// letters.js — the 8 letters. Each has a title (shown on the envelope) and a body (shown when opened).
+// 8 letters
 const letters = [
   {
     title: "The Beginning",

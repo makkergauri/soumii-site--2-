@@ -1,5 +1,4 @@
-// game.js — Catch the Ramen 🍜
-// secret messages — edit/add freely, one is picked at random each time
+// catch the ramen game
 const secretMessages = [
   "You are the best roommate in this world.",
   "I got so lucky rooming with you.",
